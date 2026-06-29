@@ -1,0 +1,79 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Konum İzinleri -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    
+    <!-- İnternet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    <!-- Mikrofon (Sesli komut için) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    
+    <!-- Bildirimler (Android 13+ için) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    
+    <!-- Titreşim (Bildirim için) -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <application
+        android:label="Manisa Ulaşım"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+    
+    <!-- Queries - Android 11+ için gerekli -->
+    <queries>
+        <!-- Text Processing -->
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+        
+        <!-- TTS (Text-to-Speech) için -->
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        
+        <!-- Speech Recognition için -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+        
+        <!-- Google Maps yol tarifi için -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+        
+        <!-- Google Maps paketi -->
+        <package android:name="com.google.android.apps.maps" />
+    </queries>
+</manifest>
